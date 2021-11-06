@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Calculator</string>
+    <string name="pibtn">&#960;</string>
+    <string name="btnsin">sin</string>
+    <string name="degbtn">deg</string>
+    <string name="brackopen">(</string>
+    <string name="brackClose">)</string>
+    <string name="backSlash">&#0247;</string>
+    <string name="btnseven">7</string>
+    <string name="btneight">8</string>
+    <string name="btnNine">9</string>
+    <string name="btnMultipy">×</string>
+    <string name="btnFour">4</string>
+    <string name="btnFive">5</string>
+    <string name="btnSix">6</string>
+    <string name="btnMinus">&#0045;</string>
+    <string name="btnplus">&#0043;</string>
+    <string name="btnthree">3</string>
+    <string name="btntwo">2</string>
+    <string name="btnone">1</string>
+    <string name="btndot">.</string>
+    <string name="btnequal">&#0061;</string>
+    <string name="expression">0</string>
+    <string name="tvText">0</string>
+    <string name="e">cos</string>
+</resources>

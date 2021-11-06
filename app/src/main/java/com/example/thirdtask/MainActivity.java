@@ -15,7 +15,7 @@ import javax.xml.xpath.XPathExpression;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     Button btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btnplus, btnminus, btniDvide, btnMultiply,
-            btnclear, btnEqual, btnDot, btnbackspace,btnPi,btnsin,btncos;
+            btnclear, btnEqual, btnDot, btnbackspace, btnPi, btnsin, btncos;
     EditText editTextMainscreen;
     TextView tvHistory;
 
@@ -84,6 +84,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View v) {
 
@@ -119,7 +120,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 updateText("9");
                 break;
             case R.id.btnplus:
-                 updateText("+");
+                updateText("+");
                 break;
             case R.id.btnminus:
                 updateText("-");
@@ -156,34 +157,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    void setBtnSin(){
+    void setBtnSin() {
         try {
             Double sin = Math.sin(Math.toRadians(Double.parseDouble(editTextMainscreen.getText().toString())));
             editTextMainscreen.setText("");
-            tvHistory.setText(Math.floor(sin)+"");
-        }catch (Exception e)
-        {
+            tvHistory.setText(Math.floor(sin) + "");
+        } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
-    void setBtnCos(){
+
+    void setBtnCos() {
         try {
             Double cos = Math.cos(Math.toRadians(Double.parseDouble(editTextMainscreen.getText().toString())));
             editTextMainscreen.setText("");
-            tvHistory.setText(Math.floor(cos)+"");
-        }catch (Exception e)
-        {
+            tvHistory.setText(Math.floor(cos) + "");
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
     }
-    public  void  setBtnPi()
-    {
-        double pi= Math.PI;
-        tvHistory.setText(pi+"");
+
+    public void setBtnPi() {
+        double pi = Math.PI;
+        tvHistory.setText(pi + "");
         editTextMainscreen.setText("");
     }
+
     public void setBtnEqual() {
 
         String str = editTextMainscreen.getText().toString();
@@ -196,7 +196,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 str += sum;
                 editTextMainscreen.setText("");
 
-                tvHistory.setText(number[0]+"+"+number[1]+"= "+str);
+                tvHistory.setText(number[0] + "+" + number[1] + "= " + str);
                 updateText(str + "");
 
                 Toast.makeText(this, "result" + str, Toast.LENGTH_SHORT).show();
@@ -249,29 +249,39 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
     }
+
     public void updateText(String str) {
         String oldString = editTextMainscreen.getText().toString();
         int cursorPos = editTextMainscreen.getSelectionStart();
-
         String leftstring = oldString.substring(0, cursorPos);
         String rightstring = oldString.substring(cursorPos);
         editTextMainscreen.setText(String.format("%s%s%s", rightstring, str, leftstring));
         editTextMainscreen.setSelection(cursorPos + 0);
-//        if (editTextMainscreen.getText().length() >= 15) {
-//            Toast.makeText(this, "Maximum number of digits(13) exceeded.", Toast.LENGTH_SHORT).show();
-//        }
-    }
-
-    public void setBtnbackspace() {
-        int cursorPostion = editTextMainscreen.getSelectionStart();
-        int textLength = editTextMainscreen.getText().length();
-        if (cursorPostion != 0 && textLength != 0) {
-            SpannableStringBuilder selection = (SpannableStringBuilder) editTextMainscreen.getText();
-            selection.replace(cursorPostion - 1, cursorPostion, "");
-            editTextMainscreen.setText(selection);
-            editTextMainscreen.setSelection(cursorPostion - 1);
-
+        if (editTextMainscreen.getText().length() >= 14) {
+            Toast.makeText(this, "Maximum number of digits(13) exceeded.", Toast.LENGTH_SHORT).show();
         }
     }
 
-}
+    public void  setBtnbackspace()
+    {
+        String t = String.valueOf(editTextMainscreen.getText());
+
+        if (t.isEmpty()){
+            editTextMainscreen.setText("0");
+        } else {
+            editTextMainscreen.setText(t.substring(0, t.length() - 1));
+        }
+    }
+    }
+//        int cursorPostion = editTextMainscreen.getSelectionStart();
+//        int textLength = editTextMainscreen.getText().length();
+//        if(cursorPostion !=0 && textLength !=0)
+//        {
+//            SpannableStringBuilder selection= (SpannableStringBuilder) editTextMainscreen.getText();
+//            selection.replace(cursorPostion-1,cursorPostion,"");
+//            editTextMainscreen.setText(selection);
+//            editTextMainscreen.setSelection(cursorPostion-1);
+//
+//        }
+//    }
+

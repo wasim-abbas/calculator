@@ -25,7 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:maxLines="2"
-        android:maxLength="15"
+        android:maxLength="13"
         android:gravity="top"
         android:textAlignment="textEnd"
         android:textColorHint="@color/white"
